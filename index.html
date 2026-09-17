@@ -143,12 +143,6 @@
     gap:10px;
     margin-bottom:18px;
   }
-  .eyebrow::before{
-    content:'';
-    width:22px;
-    height:1px;
-    background:var(--border-strong);
-  }
   h2.title{
     font-size:clamp(26px, 3.4vw, 34px);
     font-weight:700;
@@ -329,6 +323,79 @@
   }
 
   /* ============ PROJECTS ============ */
+  .featured-project{
+    background:var(--card);
+    border:1px solid var(--border-strong);
+    border-radius:6px;
+    padding:40px 44px;
+    margin-bottom:1px;
+    position:relative;
+  }
+  .featured-project::before{
+    content:'';
+    position:absolute;
+    top:0; left:0;
+    width:3px;
+    height:100%;
+    background:var(--accent);
+    border-radius:6px 0 0 6px;
+  }
+  .featured-project h3{
+    font-size:26px;
+    font-weight:700;
+    letter-spacing:-.01em;
+    margin:10px 0 18px;
+  }
+  .featured-desc{
+    color:var(--ink-soft);
+    font-size:15px;
+    max-width:78ch;
+    margin-bottom:34px;
+  }
+  .featured-body{
+    display:grid;
+    grid-template-columns:1.5fr 1fr;
+    gap:48px;
+  }
+  .featured-subhead{
+    font-family:var(--mono);
+    font-size:11px;
+    letter-spacing:.1em;
+    text-transform:uppercase;
+    color:var(--muted);
+    margin-bottom:16px;
+  }
+  .featured-features ul{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:12px 28px;
+  }
+  .featured-features li{
+    font-size:14px;
+    color:var(--ink-soft);
+    line-height:1.5;
+    position:relative;
+    padding-left:16px;
+  }
+  .featured-features li::before{
+    content:'';
+    position:absolute;
+    left:0;
+    top:8px;
+    width:5px;
+    height:5px;
+    border-radius:50%;
+    background:var(--accent);
+  }
+  .featured-side{
+    display:flex;
+    flex-direction:column;
+    border-left:1px solid var(--border);
+    padding-left:32px;
+  }
+  .featured-side .project-stack{ margin-bottom:26px; }
+  .featured-side .project-link{ margin-top:auto; }
+
   .projects-grid{
     display:grid;
     grid-template-columns:repeat(2, 1fr);
@@ -465,7 +532,6 @@
     max-width:640px;
   }
   #contact .eyebrow{ justify-content:center; }
-  #contact .eyebrow::before{ display:none; }
   #contact h2.title{ text-align:center; }
   #contact .lede{
     text-align:center;
@@ -531,12 +597,16 @@
     .about-grid{ grid-template-columns:1fr; gap:20px; }
     .skills-grid{ grid-template-columns:repeat(2, 1fr); }
     .projects-grid{ grid-template-columns:1fr; }
+    .featured-body{ grid-template-columns:1fr; gap:32px; }
+    .featured-side{ border-left:none; padding-left:0; border-top:1px solid var(--border); padding-top:28px; }
   }
 
   @media (max-width:640px){
     .wrap{ padding:0 20px; }
     section{ padding:64px 0; }
     #hero{ padding-top:56px; padding-bottom:64px; }
+    .featured-project{ padding:28px 24px; }
+    .featured-features ul{ grid-template-columns:1fr; }
 
     .nav-links{
       position:fixed;
@@ -648,10 +718,10 @@
           <p class="glance-label">Focus</p>
           <p class="glance-value">Backend &amp; full-stack web development</p>
         </div>
-        <!-- <div class="glance-row">
+        <div class="glance-row">
           <p class="glance-label">Currently</p>
           <p class="glance-value">Python Full Stack Development — Edure</p>
-        </div> -->
+        </div>
         <div class="glance-row">
           <p class="glance-label">Looking for</p>
           <p class="glance-value">Entry-level Python / Django roles</p>
@@ -723,22 +793,70 @@
       <p class="eyebrow">Projects</p>
       <h2 class="title">Things I've built.</h2>
       <p class="lede">Real projects, built while learning full-stack development.</p>
-      <div class="projects-grid">
+<div class="featured-project">
+  <p class="project-type">Full-Stack Web Application · Major Project</p>
 
-        <div class="project-card">
-          <p class="project-type">Full-Stack Web Application</p>
-          <h3>Learning Management System</h3>
-          <p>A role-based Learning Management System built with Django and Django REST Framework. Includes different roles such as Admin, Academic Manager, Faculty, and Student, with functionality for managing courses, batches, learning materials, assignments, attendance, leave requests, and other academic activities.</p>
-          <div class="project-stack">
-            <span class="stack-tag">Django</span>
-            <span class="stack-tag">DRF</span>
-            <span class="stack-tag">JavaScript</span>
-            <span class="stack-tag">Bootstrap</span>
-            <span class="stack-tag">HTML</span>
-            <span class="stack-tag">CSS</span>
-          </div>
-          <a href="https://github.com/Mahadevan-M" class="project-link" target="_blank" rel="noopener">View Code →</a>
-        </div>
+  <h3>Learning Management System (LMS)</h3>
+
+  <p class="featured-desc">
+    A role-based Learning Management System developed to manage academic
+    activities for Admin, Academic Manager, Faculty, and Student users.
+    The application provides separate workflows for managing users,
+    courses, batches, learning content, assignments, attendance,
+    leave requests, announcements, and fees.
+  </p>
+
+  <div class="featured-body">
+
+    <div class="featured-features">
+
+      <p class="featured-subhead">What I Worked On</p>
+
+      <ul>
+        <li>Implemented JWT-based authentication and role-based access</li>
+        <li>Added fee payment integration using Razorpay API</li>
+        <li>Implemented faculty, student, course, and batch workflows</li>
+        <li>Integrated frontend pages with backend APIs using Axios</li>
+        <li>Implemented syllabus, materials, assignments, and attendance modules</li>
+        <li>Implemented multi-level leave request workflow</li>
+      </ul>
+
+    </div>
+
+    <div class="featured-side">
+
+      <p class="featured-subhead">Tech Stack</p>
+
+      <div class="project-stack">
+        <span class="stack-tag">Python</span>
+        <span class="stack-tag">Django</span>
+        <span class="stack-tag">Django REST Framework</span>
+        <span class="stack-tag">JavaScript</span>
+        <span class="stack-tag">HTML</span>
+        <span class="stack-tag">CSS</span>
+        <span class="stack-tag">Bootstrap</span>
+        <span class="stack-tag">MySQL</span>
+        <span class="stack-tag">JWT</span>
+        <span class="stack-tag">Axios</span>
+        <span class="stack-tag">Razorpay API</span>
+        <span class="stack-tag">Git</span>
+        <span class="stack-tag">GitHub</span>
+      </div>
+
+      <a
+        href="https://github.com/kiranRaveendran/LMS-Maha_Hari"
+        class="project-link"
+        target="_blank"
+        rel="noopener"
+      >
+        View Code →
+      </a>
+
+    </div>
+
+  </div>
+</div>
+      <div class="projects-grid">
 
         <div class="project-card">
           <p class="project-type">Web Platform</p>
